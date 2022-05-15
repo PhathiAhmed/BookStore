@@ -1,0 +1,54 @@
+﻿@model BookStore.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "/Views/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        @if (Model.ImageUrl != null)
+
+        {
+            <dt>
+                Book Image
+            </dt>
+            <dd>
+                <img src="~/Uploads/@Model.ImageUrl" alt="Missing Book Image" class="img-thumbnail" width="65" height="65" style="border-radius:50%" />
+            </dd>
+        }
+        <dt>
+            Author Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.author.FullName)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-info" })
+    <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
+</div>
